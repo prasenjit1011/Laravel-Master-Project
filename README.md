@@ -17,6 +17,4 @@ php artisan migrate:rollback --step=1
 
 php artisan make:migration add_status_to_users_table --table=users 
 
-php artisan make:migration create_orders_table 
-
-php artisan make:migration create_order_products_table
+php artisan make:migration create_todo_table 
