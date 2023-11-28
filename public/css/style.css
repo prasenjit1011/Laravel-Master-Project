@@ -1,0 +1,30 @@
+.nav_border{
+    border-bottom:#ccced0;
+    border-style:solid;
+}
+
+.password_field{
+    display: none;
+}
+
+.product_tbl.thead {
+    border: 1px solid #000 !important;
+}
+thead tr th, td{
+    padding: 5px;;
+    border: 1px solid #000 !important;
+}
+
+
+
+.profile_tbl{
+    width: 100%;
+}
+
+.profile_tbl tr > th{
+    margin: 10px;;
+}
+
+.profile_tbl tr > td{
+    margin: 10px;;
+}
