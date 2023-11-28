@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $todos = Todo::where('user_id', Auth::user()->id)->get();
-        return view('home', compact('todos'));
+        return view('todos.index', compact('todos'));
     }
 
     public function create(){
