@@ -26,7 +26,6 @@ class HomeController extends Controller
     public function index()
     {
         $todos = Todo::where('user_id', Auth::user()->id)->get();
-        //dd($todos);
         return view('home', compact('todos'));
     }
 
@@ -36,7 +35,6 @@ class HomeController extends Controller
 
     public function store(Request $request){
         $data = array_merge($request->all(), ['user_id' => Auth::user()->id]);
-        //dd($data);
         Todo::create($data);
         return redirect(route('todo.index'))->with('success', 'Todo added successfully.');
     }
@@ -47,20 +45,22 @@ class HomeController extends Controller
     }
 
     public function update(Request $request, $id){
-        //dd('Update', $id, $request->all());
-
         $todo = Todo::find($id);
         $data   = $request->all();
         
         if($todo){
             $todo->update($data);
         }
-
         return redirect(route('todo.index'))->with('success', 'Todo updated successfully.');;
     }
 
+    public function destroy(Todo $todo)
+    {
+        $todo->delete();
+        return redirect(route('todo.index'))->with('success', 'Todo deleted successfully.');;
+    }
+
     public function show(Request $request){
-        //dd('Show', $request->all());
         return redirect(route('todo.index'));
     }
 }

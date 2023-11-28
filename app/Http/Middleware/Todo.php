@@ -16,7 +16,7 @@ class Todo
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (request()->getMethod() != 'GET')
+        if (request()->getMethod() != 'GET' && request()->getMethod() != 'DELETE')
         {
             $fields = [
                 'name' => 'required',

@@ -29,16 +29,21 @@
                             <th>Name</th>
                             <th>Status</th>
                             <th>Details</th>
-                            <th>Action</th>
+                            <th width="150">Action</th>
                         </thead>
                         <tbody>
                             @foreach($todos as $todo)
                                 <tr>
                                     <td>{{ $todo->name}}</td>
-                                    <td>{{ $todo->status == 1 ? 'Active' : 'Deactive'}}</td>
+                                    <td>{{ $todo->status == 1 ? 'Active' : 'Completed'}}</td>
                                     <td>{{ $todo->details}}</td>
                                     <td>
-                                        <a href="{{ route('todo.edit', $todo->id )}}">Edit</a>
+                                        <button class="btn btn-primary btn-sm" style="float:left; margin-right:10px;" onclick="window.location.href='{{ route('todo.edit', $todo->id )}}'">Edit</button>
+                                        <form  action="{{ route('todo.destroy', ['todo' => $todo->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm btn-block">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
