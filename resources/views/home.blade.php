@@ -24,31 +24,35 @@
                         </div>
                     @endif
                 
-                    <table width="100%" style="border: 1px solid #000 !important;">
-                        <thead>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Details</th>
-                            <th width="150">Action</th>
-                        </thead>
-                        <tbody>
-                            @foreach($todos as $todo)
-                                <tr>
-                                    <td>{{ $todo->name}}</td>
-                                    <td>{{ $todo->status == 1 ? 'Active' : 'Completed'}}</td>
-                                    <td>{{ $todo->details}}</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-sm" style="float:left; margin-right:10px;" onclick="window.location.href='{{ route('todo.edit', $todo->id )}}'">Edit</button>
-                                        <form  action="{{ route('todo.destroy', ['todo' => $todo->id]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm btn-block">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    @if(!$todos->count())
+                        <h3>Todo List is Empty</h3>
+                    @else
+                        <table width="100%" style="border: 1px solid #000 !important;">
+                            <thead>
+                                <th>Name </th>
+                                <th>Status</th>
+                                <th>Details</th>
+                                <th width="150">Action</th>
+                            </thead>
+                            <tbody>
+                                @foreach($todos as $todo)
+                                    <tr>
+                                        <td>{{ $todo->name}}</td>
+                                        <td>{{ $todo->status == 1 ? 'Active' : 'Completed'}}</td>
+                                        <td>{{ $todo->details}}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" style="float:left; margin-right:10px;" onclick="window.location.href='{{ route('todo.edit', $todo->id )}}'">Edit</button>
+                                            <form  action="{{ route('todo.destroy', ['todo' => $todo->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm btn-block">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
             </div>
         </div>
