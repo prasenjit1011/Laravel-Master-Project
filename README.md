@@ -19,6 +19,6 @@ php artisan make:migration add_status_to_users_table --table=users
 
 php artisan make:migration create_todo_table 
 
-php artisan event:list
-php artisan make:event TodoAlert
-php artisan make:listener SendTodoAlert --event=TodoAlert
+<p>php artisan event:list</p>
+<p>php artisan make:event TodoAlert</p>
+<p>php artisan make:listener SendTodoAlert --event=TodoAlert</p>
