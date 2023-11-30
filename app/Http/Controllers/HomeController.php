@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events\TodoAlert;
+use App\Jobs\TodoJob;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,9 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        TodoAlert::dispatch(date('H:i:s A'));;
+        TodoAlert::dispatch('NodeJS');;
+        dispatch(new TodoJob('ReactJS'))->delay(20);
+
     }
 
     /**

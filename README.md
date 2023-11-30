@@ -16,3 +16,8 @@ php artisan event:list<br />
 php artisan make:event TodoAlert<br />
 php artisan make:listener SendTodoAlert --event=TodoAlert<br />
 
+php artisan queue:table<br />
+php artisan make:job TodoJob<br />
+php artisan queue:work<br />
+php artisan queue:listen<br />
+
