@@ -29,11 +29,14 @@ php artisan make:command Todo <br />
 >>> Example of Dependency Injection and Static Method <br />
 
 Passport<br />
-composer require laravel/passport -W
--W(--with-all-dependencies) allows upgrades, downgrades, and removals for packages currently locked to specific versions.
+composer require laravel/passport -W <br />
+php artisan passport:install --uuids <br />
+php artisan passport:keys <br />
 
+Add Header <br />
+Accept : application/json <br />
+Authorization : Bearer tokenValue <br />
 
-php artisan passport:install --uuids
-php artisan passport:keys
-
+-W  => (--with-all-dependencies) allows upgrades, downgrades, and removals for packages currently locked to specific versions. <br />
+--uuids => Table auth_client => id will be encrypted
 
