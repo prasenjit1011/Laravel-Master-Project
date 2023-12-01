@@ -9,6 +9,7 @@ use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Traits\TodoTrait;
+use Illuminate\Support\Arr;
 
 class HomeController extends Controller
 {
@@ -83,5 +84,9 @@ class HomeController extends Controller
         Log::alert('Todo Controller Static Function called from scheduler command.');
     }
 
-    
+    public function notes(){
+        $array = Arr::collapse([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+        info('Some helpful information!');
+        dd($array);
+    }
 }
