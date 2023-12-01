@@ -8,9 +8,11 @@ use App\Jobs\TodoJob;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Traits\TodoTrait;
 
 class HomeController extends Controller
 {
+    use TodoTrait;
     /**
      * Create a new controller instance.
      *
@@ -41,6 +43,8 @@ class HomeController extends Controller
 
     public function store(Request $request){
         $data = array_merge($request->all(), ['user_id' => Auth::user()->id]);
+        $data['image'] = $this->verifyAndUpload($request, 'image', 'images');
+
         Todo::create($data);
         return redirect(route('todo.index'))->with('success', 'Todo added successfully.');
     }
@@ -53,6 +57,7 @@ class HomeController extends Controller
     public function update(Request $request, $id){
         $todo = Todo::find($id);
         $data   = $request->all();
+        $data['image'] = $this->verifyAndUpload($request, 'image', 'images');
         
         if($todo){
             $todo->update($data);

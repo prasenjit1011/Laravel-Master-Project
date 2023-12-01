@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Todo Details') }}</div>
                 <div class="card-body">
                 
-                    <form id="todoFrm" action="{{ !empty($todo->id) ? route('todo.update', $todo->id) : route('todo.store') }}" method="post" >
+                    <form id="todoFrm" action="{{ !empty($todo->id) ? route('todo.update', $todo->id) : route('todo.store') }}" method="post" enctype="multipart/form-data" >
                         @csrf
                         @method(!empty($todo->id) ? 'PUT' : 'POST')
                         <div class="form-group" style="margin:20px 0;">
@@ -38,6 +38,10 @@
                         </div>
                         <br />
                         
+                        <div class="form-group " style="margin:20px 0;" >
+                            <label style="float:left; width:175px;">Task Image</label>
+                            <input type="file" class="form-control" name="image" id="image" aria-describedby="emailHelp" placeholder="Upload Todo Image" />
+                        </div>
                         
                         <div class="form-group" style="margin:20px 0;">
                             <label>Details</label>
