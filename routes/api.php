@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,23 +32,12 @@ Route::get('/getTodoToken', function(){
     return $token;
 });
 
-
-
-Route::any('/getTodoUser', function(){
-    $user = User::first();
-    return response()->json([
-        'time'  => date('d/m/y h:i:s A'),
-        'user'  => $user
-    ]);
-})->middleware('auth:api');
-
-/*
-Route::middleware('auth:api')->group(function(){
-    Route::get('/getTodoUser', function(){
+Route::middleware(['auth:api'])->group(function(){
+    Route::post('/getTodoUser', function(){
         $user = User::first();
         return response()->json([
             'time'  => date('d/m/y h:i:s A'),
             'user'  => $user
         ]);
     });
-});*/
+});

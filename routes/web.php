@@ -21,8 +21,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('todo', 'App\Http\Controllers\HomeController')->middleware(Todo::class);;
-
-
-Route::any('/help', function(){
-    echo 'Hello Web Route';
-});
