@@ -7,6 +7,7 @@ use App\Events\TodoAlert;
 use App\Jobs\TodoJob;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -68,4 +69,14 @@ class HomeController extends Controller
     public function show(Request $request){
         return redirect(route('todo.index'));
     }
+
+    public function todoScheduler(){
+        Log::alert('Todo Controller called from scheduler command.');
+    }
+
+    static function todoStaticScheduler(){
+        Log::alert('Todo Controller Static Function called from scheduler command.');
+    }
+
+    
 }

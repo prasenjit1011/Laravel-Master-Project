@@ -21,3 +21,9 @@ php artisan make:job TodoJob<br />
 php artisan queue:work<br />
 php artisan queue:listen<br />
 
+php artisan schedule:list <br />
+php artisan schedule:work <br />
+php artisan make:command Todo <br />
+>>> $signature = 'todo:world' <br />
+>>> php artisan todo:world <br />
+>>> Example of Dependency Injection and Static Method <br />
