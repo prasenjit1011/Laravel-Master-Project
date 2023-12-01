@@ -27,3 +27,13 @@ php artisan make:command Todo <br />
 >>> $signature = 'todo:world' <br />
 >>> php artisan todo:world <br />
 >>> Example of Dependency Injection and Static Method <br />
+
+Passport<br />
+composer require laravel/passport -W
+-W(--with-all-dependencies) allows upgrades, downgrades, and removals for packages currently locked to specific versions.
+
+
+php artisan passport:install --uuids
+php artisan passport:keys
+
+
