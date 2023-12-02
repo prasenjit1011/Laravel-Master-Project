@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events\TodoAlert;
 use App\Jobs\TodoJob;
+use App\Mail\MailSetup;
 use App\Models\Todo;
 use App\Traits\TodoTrait;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Arr;
 
 class HomeController extends Controller
@@ -102,5 +104,11 @@ class HomeController extends Controller
         info('Some helpful information!');
 
         dd('-: Note Data :-', $response1->json(), $response2->json(), json_encode($array));
+    }
+
+    public function mailcheck(){
+        //return new MailSetup;
+        return Mail::to('test@admin.com')->send(new MailSetup);
+        dd('-: mailcheck :-');
     }
 }

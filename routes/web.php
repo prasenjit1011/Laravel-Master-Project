@@ -23,3 +23,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('todo', 'App\Http\Controllers\HomeController')->middleware(Todo::class);;
 
 Route::get('/notes', [App\Http\Controllers\HomeController::class, 'notes'])->name('notes');
+
+
+Route::get('/mailcheck', [App\Http\Controllers\HomeController::class, 'mailcheck'])->name('mailcheck');
