@@ -24,8 +24,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        TodoAlert::dispatch('NodeJS');;
-        dispatch(new TodoJob('ReactJS'))->delay(20);
+        TodoAlert::dispatch('NodeJS');; //Event
+        dispatch(new TodoJob('ReactJS'))->delay(20); //Job with Queue
 
     }
 
