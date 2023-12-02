@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Events\TodoAlert;
 use App\Jobs\TodoJob;
 use App\Models\Todo;
+use App\Traits\TodoTrait;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use App\Traits\TodoTrait;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Arr;
 
 class HomeController extends Controller
@@ -85,8 +87,20 @@ class HomeController extends Controller
     }
 
     public function notes(){
+        // HTTP-Client-Get
+        $arr        = ['name' => 'Taylor', 'page' => 1 ];
+        $url        = 'https://quotes-api.tickertape.in/quotes?sids=IRM,DABU';
+        $response1  = Http::timeout(3)->get($url);
+        //$response = Http::post($url, $arr);
+        
+        $url        = 'http://localhost:8010/api/get_user';
+        $token      = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTcwMTQ0MDcxMywiZXhwIjoxNzAxNDQ0MzEzLCJuYmYiOjE3MDE0NDA3MTMsImp0aSI6IlBFY2JGVmNKMlZUWTN2VXAiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.0pPgAA9PED8HP2uLf3GV6lnAQIv5Dm0gTiZIJM4A-Q0';
+        $response2  = Http::acceptJson()->withToken($token)->timeout(3)->get($url, $arr);
+        //$response = Http::timeout(3)->get($url);
+
         $array = Arr::collapse([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
         info('Some helpful information!');
-        dd($array);
+
+        dd('-: Note Data :-', $response1->json(), $response2->json(), json_encode($array));
     }
 }
