@@ -22,7 +22,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('todo')->everyMinute();
         //
-        // $schedule->command('inspire')->hourly();
+        // $schedule->command('inspire')->hourly();everySeconds
     }
 
     /**

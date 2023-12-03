@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GrowCtrl;
 
 class Todo extends Command
 {
@@ -14,7 +14,7 @@ class Todo extends Command
      * @var string
      */
     protected $signature = 'todo';
-    protected $home;
+    protected $grow;
     /**
      * The console command description.
      *
@@ -27,10 +27,10 @@ class Todo extends Command
      *
      * @return void
      */
-    public function __construct(HomeController $home)
+    public function __construct(GrowCtrl $grow)
     {
         parent::__construct();
-        $this->home = $home;
+        $this->grow = $grow;
     }
 
     /**
@@ -40,9 +40,9 @@ class Todo extends Command
      */
     public function handle()
     {
-        $this->home->todoScheduler();
-        HomeController::todoStaticScheduler();
-        Log::alert('Todo Command todo, frm scheduler or cmd.');
+        $this->grow->data();
+        //HomeController::todoStaticScheduler();
+        //Log::alert('Todo Command todo, frm scheduler or cmd.');
         return 0;
     }
 }
