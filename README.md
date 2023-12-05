@@ -28,10 +28,29 @@ php artisan make:command Todo <br />
 >>> php artisan todo:world <br />
 >>> Example of Dependency Injection and Static Method <br />
 
+composer require tymon/jwt-auth <br />
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider" <br />
+php artisan jwt:secret <br />
+php artisan make:middleware JwtMiddleware <br />
 
-composer require tymon/jwt-auth
-php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
-php artisan jwt:secret
-php artisan make:middleware JwtMiddleware
+Cron API** <br />
+Database Seeder<br />
+php artisan make:factory PostFactory <br />
+php artisan db:seed <br />
+public function definition(){ <br />
+    return [ <br />
+        'user_id' => rand(1,2), <br />
+        'name' => $this->faker->name(), <br />
+        'details' => $this->faker->realText(20) <br />
+    ]; <br />
+} <br /> <br />
+public function run(){ <br />
+    \App\Models\Todo::factory(5)->create(); <br />
+} <br />
 
-Cron API**
+GraphQL <br />
+composer require rebing/graphql-laravel <br />
+php artisan vendor:publish --provider="Rebing\GraphQL\GraphQLServiceProvider" <br />
+
+
+
