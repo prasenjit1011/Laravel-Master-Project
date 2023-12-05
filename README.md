@@ -29,9 +29,9 @@ php artisan make:command Todo <br />
 >>> Example of Dependency Injection and Static Method <br />
 
 
-
 composer require tymon/jwt-auth
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 php artisan jwt:secret
 php artisan make:middleware JwtMiddleware
 
+Cron API**
