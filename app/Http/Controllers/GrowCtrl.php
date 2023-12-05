@@ -31,14 +31,17 @@ class GrowCtrl extends Controller{
                         ->whereNull('sid_grow_status')
                         ->first();
 
+        Log::info(json_encode($res));
         if(!$res){
             Log::info('-: sid_grow : All completed :-');
-            /*
             $res = DB::connection('mysql2')
                         ->table('demat')
-                        ->whereIsNull('sid_grow')
-                        ->update(['sid_grow' => sharecode]);
+                        ->whereNotNull('sid')
+                        ->whereNull('sid_grow')
+                        ->whereNull('sid_grow_status')
+                        ->update(['sid_grow' => DB::raw('sharecode')]);
 
+            /*
             UPDATE demat SET sid_grow = sharecode 
                             where sid_grow is NULL 
                             and sharecode != '' 
@@ -52,7 +55,7 @@ class GrowCtrl extends Controller{
         $grow	= 'https://groww.in/v1/api/charting_service/v2/chart/delayed/exchange/NSE/segment/CASH/';
         $url    = $grow.$res->sid_grow.'/all?intervalInDays=3&minimal=true';
         $data   = Http::timeout(10)->get($url);
-        $table  = 'stock_pricehistory2';
+        $table  = 'stock_pricehistory';
 
         if(!$data->successful()){
             $this->updateStatus($res->id, 2);
