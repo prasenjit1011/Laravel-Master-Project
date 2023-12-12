@@ -49,6 +49,7 @@ public function run(){ <br />
 } <br />
 
 GraphQL <br />
+https://magecomp.com/blog/create-graphql-api-laravel-8/<br />
 composer require rebing/graphql-laravel <br />
 php artisan vendor:publish --provider="Rebing\GraphQL\GraphQLServiceProvider" <br />
 

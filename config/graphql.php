@@ -74,14 +74,14 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                App\GraphQL\Query\UsersQuery::class,
+                "getProduct" => \App\GraphQL\Queries\GetProduct::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
             ],
             // The types only available in this schema
             'types' => [
-                App\GraphQL\Type\UserType::class
+                "GetProduct" =>  \App\GraphQL\Types\GetProduct::class,
             ],
 
             // Laravel HTTP middleware
