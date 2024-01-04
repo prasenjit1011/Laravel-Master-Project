@@ -74,7 +74,7 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                "getProduct" => \App\GraphQL\Queries\GetProduct::class,
+                "getProductList" => \App\GraphQL\Queries\GetProduct::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
