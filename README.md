@@ -53,3 +53,7 @@ https://magecomp.com/blog/create-graphql-api-laravel-8/<br />
 composer require rebing/graphql-laravel <br />
 php artisan vendor:publish --provider="Rebing\GraphQL\GraphQLServiceProvider" <br />
 
+Authorization-Gate-Policy <br />
+php artisan make:policy TodoPolicy --model=Todo <br />
+It's needed to implement user access with eficient way. <br />
+

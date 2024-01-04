@@ -7,7 +7,7 @@ use App\Events\TodoAlert;
 use App\Jobs\TodoJob;
 use App\Models\Todo;
 use App\Traits\TodoTrait;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
@@ -55,10 +55,22 @@ class HomeController extends Controller
 
     public function edit($id){
         $todo = Todo::find($id);
+
+        if (!Gate::allows('update-todo', $todo)) {
+            abort(403);
+        }
+
         return view('todos.addedit', compact('id', 'todo'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, Todo $todo, $id){
+        dd(1452445);
+        if (! Gate::allows('update-post', $todo)) {
+            abort(403);
+        }
+        dd(44556677);
+
+
         $todo = Todo::find($id);
         $data   = $request->all();
         $data['image'] = $this->verifyAndUpload($request, 'image', 'images');
